@@ -1,0 +1,13 @@
+# Analysis defaults (currently used for pitch_mm / strip_center)
+input_file: ${MPD_SUITE}/data/run_0254.dat_apv.root
+pedestal_file: ${MPD_SUITE}/data/run_0253.dat_apv.root
+output_file: ${MPD_SUITE}/../RECO_DATA/run_0297.dat_apv.root
+nsigma: 3.0
+sfirst: 0
+sdelta: 256
+min_good: 6
+plot_events: 0
+plots: true
+pitch_mm: 0.4
+# strip_center < 0 => auto from min/max strip in the run
+strip_center: -1

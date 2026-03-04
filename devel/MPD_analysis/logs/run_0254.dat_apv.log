@@ -1,0 +1,15 @@
+MPD_analysis log
+input_signal=../DATA/out/run_0254.dat_apv.root
+input_pedestal=../DATA/out/run_0253.dat_apv.root
+output_root=/Users/simone/Work/INFN/elettronica/MPD_dev/devel/MPD_analysis/devel/MPD_analysis/output/run_0254.dat_apv.root
+nsigma=3
+sfirst=0
+sdelta=256
+minGood=6
+pitch_mm=0.4
+strip_center_input=-1
+strip_center_used=127.5
+plot_events=0
+make_plots=true
+events_total=10000
+events_selected=10000

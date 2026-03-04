@@ -1,0 +1,14 @@
+MPD reco log
+input_signal=/Users/simone/Work/INFN/elettronica/MPD_dev/devel/MPD_analysis/../DATA/out/run_0297.dat_apv.root
+input_pedestal=/Users/simone/Work/INFN/elettronica/MPD_dev/devel/MPD_analysis/../DATA/out/run_0295.dat_apv.root
+output_root=/Users/simone/Work/INFN/elettronica/MPD_dev/devel/MPD_analysis/../RECO_DATA/run_0297.dat_apv.root
+nsigma=3
+sfirst=0
+sdelta=256
+minGood=6
+pitch_mm=0.4
+strip_center_input=-1
+strip_center_used=703.5
+events_total=1000
+events_selected=0
+events_reco=0
