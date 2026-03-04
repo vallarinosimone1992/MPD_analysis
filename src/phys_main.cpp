@@ -188,13 +188,13 @@ int RunPhys(const Options &opt)
                posAllRange.first, posAllRange.second);
 
   TH1D h1PosStrip("h1PosStrip",
-                  "Single-cluster events: position (strip);pos_strip;counts",
+                  "Most significant cluster per event: position (strip);pos_strip;counts",
                   200, posStripRange.first, posStripRange.second);
   TH1D h1PosMm("h1PosMm",
-               "Single-cluster events: position (mm);pos (mm);counts",
+               "Most significant cluster per event: position (mm);pos (mm);counts",
                200, posAllRange.first, posAllRange.second);
   TH1D h1Charge("h1Charge",
-                "Single-cluster events: cluster charge (significance);Q (ADC);counts",
+                "Most significant cluster per event: cluster charge (significance);Q (ADC);counts",
                 200, chargeAllRange.first, chargeAllRange.second);
 
   TH2D hNcluVsSize("hNcluVsSize",
@@ -228,7 +228,7 @@ int RunPhys(const Options &opt)
       }
     }
 
-    if (*nclu2 == 1 && n > 0) {
+    if (n > 0) {
       size_t imax = 0;
       double qmax = (*charge2)[0];
       for (size_t i = 1; i < n; ++i) {
