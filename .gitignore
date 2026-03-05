@@ -1,0 +1,21 @@
+# Build artifacts
+/build/
+
+# Compiled binaries
+/bin/ana
+/bin/reco
+
+# Generated ROOT dictionaries
+/src/legacy/*.so
+/src/legacy/*.pcm
+/src/legacy/*.d
+/src/legacy/*_ACLiC_dict_*
+
+# Runtime outputs
+/logs/
+/output/
+
+# OS / tooling
+*.dSYM/
+.DS_Store
+*.o
