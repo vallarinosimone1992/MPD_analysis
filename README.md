@@ -11,6 +11,7 @@ MPD analysis suite based on ROOT/RDataFrame. Two separate steps:
 - Ana produces a PDF with plots.
 
 ## Structure
+All paths below are relative to `$MPD_SUITE`:
 - `bin/` compiled executables (`reco`, `ana`) + environment setup script
 - `src/` C++ sources
 - `config/` configuration (pitch/strip_center)
@@ -21,14 +22,14 @@ MPD analysis suite based on ROOT/RDataFrame. Two separate steps:
 - `logs/` reconstruction logs
 
 ## Setup
-Set the environment variable (must point to `devel/MPD_analysis`). From the `MPD_dev`
-root:
+Set the environment variable (must point to `MPD_analysis`). From the `MPD_analysis`
+directory:
 ```bash
-export MPD_SUITE="$(cd devel/MPD_analysis && pwd)"
+export MPD_SUITE="$PWD"
 ```
 Or use the setup script (recommended):
 ```bash
-source devel/MPD_analysis/bin/setup_mpd_env.sh
+source "$MPD_SUITE/bin/setup_mpd_env.sh"
 ```
 
 Decoded data are expected in:
@@ -52,7 +53,7 @@ ln -s "$MPD_SUITE/../../old_software/MPD_Eth/gdaq_mpd_eth/data" \
 ## Build (CMake)
 Build the executables:
 ```bash
-cd devel/MPD_analysis
+cd "$MPD_SUITE"
 cmake -S . -B build
 cmake --build build -j
 ```
@@ -72,6 +73,8 @@ Default outputs:
 - RECO ROOT: `$MPD_SUITE/../RECO_DATA/<input basename>`
 - PDF: `$MPD_SUITE/../output/<input basename>_phys.pdf`
 - LOG: `$MPD_SUITE/logs/<input basename>.log`
+If `-o` is not provided, the output name is automatically derived from the input
+basename (reco) or `<input>_phys.pdf` (ana).
 
 ## Recommended usage (signal + pedestal)
 1. Pick a signal run and a pedestal run (typically the previous run).
@@ -114,9 +117,12 @@ Main options (ana):
 - `-P` strip pitch in mm (override config)
 - `-c` strip center (override config; negative = auto)
 
-## Sources (src/)
-- `reco_main.cpp` - reconstruction.
-- `phys_main.cpp` - analysis from `uClu` (+ optional mean profiles from `uEvt`).
+## Sources
+- `reco_main.cpp` - CLI wrapper for reconstruction.
+- `phys_main.cpp` - CLI wrapper for analysis.
+- `src/mpd_common.h` - shared utilities (config, path helpers).
+- `lib/mpd_rwell_reco.h/.cpp` - μRWell raw reading + pedestal subtraction + clustering.
+- `lib/mpd_rwell_ana.h/.cpp` - analysis from `uClu` (+ optional mean profiles from `uEvt`).
 
 ## Operational notes
 - Default strip range: `0..255` (`-s 0 -d 256`).

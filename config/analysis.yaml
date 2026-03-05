@@ -1,7 +1,7 @@
 # Analysis defaults (currently used for pitch_mm / strip_center)
 input_file: ${MPD_SUITE}/data/run_0254.dat_apv.root
 pedestal_file: ${MPD_SUITE}/data/run_0253.dat_apv.root
-output_file: ${MPD_SUITE}/../RECO_DATA/run_0297.dat_apv.root
+# output_file is derived from the input basename unless overridden at runtime
 nsigma: 3.0
 sfirst: 0
 sdelta: 256

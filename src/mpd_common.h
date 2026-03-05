@@ -107,3 +107,40 @@ inline std::string ReplaceExtension(const std::string &name,
   }
   return name.substr(0, pos) + ext;
 }
+
+inline bool StartsWith(const std::string &value, const std::string &prefix)
+{
+  return value.size() >= prefix.size() &&
+         value.compare(0, prefix.size(), prefix) == 0;
+}
+
+inline std::string StripTrailingSlash(std::string value)
+{
+  while (!value.empty() && value.back() == '/') {
+    value.pop_back();
+  }
+  return value;
+}
+
+inline std::string RelPathToSuite(const std::string &path)
+{
+  const TString suite = ResolveSuite();
+  if (suite.Length() == 0) {
+    return path;
+  }
+  std::string suiteStr = StripTrailingSlash(suite.Data());
+  if (suiteStr.empty()) {
+    return path;
+  }
+  if (StartsWith(path, suiteStr)) {
+    return "$MPD_SUITE" + path.substr(suiteStr.size());
+  }
+  auto pos = suiteStr.find_last_of('/');
+  if (pos != std::string::npos) {
+    std::string parent = suiteStr.substr(0, pos);
+    if (StartsWith(path, parent)) {
+      return "$MPD_SUITE/.." + path.substr(parent.size());
+    }
+  }
+  return path;
+}

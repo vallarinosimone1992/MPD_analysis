@@ -1,8 +1,8 @@
 // Monolithic MPD analysis macro (RDataFrame-based)
 // Usage:
-//   root -l -b -q 'devel/MPD_analysis/macros/mpd_ana.C(1234, 1200)'
-//   root -l -b -q 'devel/MPD_analysis/macros/mpd_ana.C(1234, 1200, "devel/DATA/out")'
-//   root -l -b -q 'devel/MPD_analysis/macros/mpd_ana.C("devel/DATA/out/run_0297.dat_apv.root", "devel/DATA/out/run_0295.dat_apv.root", "devel/MPD_analysis/output/run_0297_mpdAna.root")'
+//   root -l -b -q '$MPD_SUITE/macros/mpd_ana.C(1234, 1200)'
+//   root -l -b -q '$MPD_SUITE/macros/mpd_ana.C(1234, 1200, "$MPD_SUITE/../DATA/out")'
+//   root -l -b -q '$MPD_SUITE/macros/mpd_ana.C("$MPD_SUITE/../DATA/out/run_0297.dat_apv.root", "$MPD_SUITE/../DATA/out/run_0295.dat_apv.root", "$MPD_SUITE/../output/run_0297_mpdAna.root")'
 //
 // Notes:
 // - This is a first-approximation, inspired by geAna/siAna.

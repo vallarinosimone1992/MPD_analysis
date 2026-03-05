@@ -10,10 +10,25 @@ include(${ROOT_USE_FILE})
 
 set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}/bin)
 
+add_library(mpdcore STATIC
+  lib/mpd_rwell_reco.cpp
+  lib/mpd_rwell_ana.cpp
+)
+target_include_directories(mpdcore PUBLIC
+  ${CMAKE_CURRENT_SOURCE_DIR}/src
+  ${CMAKE_CURRENT_SOURCE_DIR}/lib
+)
+
 add_executable(reco src/reco_main.cpp)
-target_include_directories(reco PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/src)
-target_link_libraries(reco PRIVATE ${ROOT_LIBRARIES})
+target_include_directories(reco PRIVATE
+  ${CMAKE_CURRENT_SOURCE_DIR}/src
+  ${CMAKE_CURRENT_SOURCE_DIR}/lib
+)
+target_link_libraries(reco PRIVATE mpdcore ${ROOT_LIBRARIES})
 
 add_executable(ana src/phys_main.cpp)
-target_include_directories(ana PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/src)
-target_link_libraries(ana PRIVATE ${ROOT_LIBRARIES})
+target_include_directories(ana PRIVATE
+  ${CMAKE_CURRENT_SOURCE_DIR}/src
+  ${CMAKE_CURRENT_SOURCE_DIR}/lib
+)
+target_link_libraries(ana PRIVATE mpdcore ${ROOT_LIBRARIES})

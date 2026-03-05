@@ -1,4 +1,0 @@
-/Users/simone/Work/INFN/elettronica/MPD_dev/devel/MPD_analysis/build/CMakeFiles/reco.dir
-/Users/simone/Work/INFN/elettronica/MPD_dev/devel/MPD_analysis/build/CMakeFiles/ana.dir
-/Users/simone/Work/INFN/elettronica/MPD_dev/devel/MPD_analysis/build/CMakeFiles/edit_cache.dir
-/Users/simone/Work/INFN/elettronica/MPD_dev/devel/MPD_analysis/build/CMakeFiles/rebuild_cache.dir
