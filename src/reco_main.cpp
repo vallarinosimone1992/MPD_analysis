@@ -633,7 +633,8 @@ int main(int argc, char **argv)
 
   const TString suite = ResolveSuite();
   if (suite.Length() == 0) {
-    std::cerr << "MPD_SUITE is not set. Example: export MPD_SUITE=/path/to/MPD_dev/devel/MPD_analysis\n";
+    std::cerr << "MPD_SUITE is not set. From MPD_dev root: "
+                 "export MPD_SUITE=\"$(cd devel/MPD_analysis && pwd)\"\n";
     return 1;
   }
 

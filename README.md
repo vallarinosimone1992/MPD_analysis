@@ -21,9 +21,10 @@ MPD analysis suite based on ROOT/RDataFrame. Two separate steps:
 - `logs/` reconstruction logs
 
 ## Setup
-Set the environment variable (must point to `devel/MPD_analysis`):
+Set the environment variable (must point to `devel/MPD_analysis`). From the `MPD_dev`
+root:
 ```bash
-export MPD_SUITE=/path/to/MPD_dev/devel/MPD_analysis
+export MPD_SUITE="$(cd devel/MPD_analysis && pwd)"
 ```
 Or use the setup script (recommended):
 ```bash
@@ -42,10 +43,10 @@ If present, these files are used as defaults by `reco`.
 ### Data symlink
 The path `$MPD_SUITE/../DATA` must point to the MPD data directory. In this repo
 there is already a symlink `devel/DATA` to `old_software/MPD_Eth/gdaq_mpd_eth/data`.
-To recreate it:
+To recreate it (from any location, after setting `MPD_SUITE`):
 ```bash
-ln -s /path/to/MPD_dev/old_software/MPD_Eth/gdaq_mpd_eth/data \
-  /path/to/MPD_dev/devel/DATA
+ln -s "$MPD_SUITE/../../old_software/MPD_Eth/gdaq_mpd_eth/data" \
+  "$MPD_SUITE/../DATA"
 ```
 
 ## Build (CMake)
@@ -59,12 +60,12 @@ cmake --build build -j
 ## Quick run
 Reco with defaults (uses bundled test data if present):
 ```bash
-./devel/MPD_analysis/bin/reco
+$MPD_SUITE/bin/reco
 ```
 
 Analysis (plots from `uClu`):
 ```bash
-./devel/MPD_analysis/bin/ana -i $MPD_SUITE/../RECO_DATA/run_0254.dat_apv.root
+$MPD_SUITE/bin/ana -i $MPD_SUITE/../RECO_DATA/run_0254.dat_apv.root
 ```
 
 Default outputs:
@@ -76,18 +77,18 @@ Default outputs:
 1. Pick a signal run and a pedestal run (typically the previous run).
 2. Run reconstruction:
 ```bash
-./devel/MPD_analysis/bin/reco \
+$MPD_SUITE/bin/reco \
   -i $MPD_SUITE/../DATA/out/run_0254.dat_apv.root \
   -p $MPD_SUITE/../DATA/out/run_0253.dat_apv.root \
   -o run_0254.dat_apv.root
 ```
 3. Run analysis:
 ```bash
-./devel/MPD_analysis/bin/ana \
+$MPD_SUITE/bin/ana \
   -i $MPD_SUITE/../RECO_DATA/run_0254.dat_apv.root \
   -A 5
 ```
-4. Open the PDF in `devel/output/`.
+4. Open the PDF in `$MPD_SUITE/../output/`.
 
 ## Executables (bin/)
 - `reco` - reconstruction (pedestal subtraction + reconstructed TTree)
